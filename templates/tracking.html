@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anju Ka Pizza</title>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="l-header">
+        <nav class="nav">
+            <div>
+                <a href="/" class="nav__logo">AKP</a>
+            </div>
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="{% url 'bookmeal' %}" class="nav__link">Book Your Meal</a></li>
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link">Combos</a></li>
+                    <li class="nav__item"><a href="{% url 'tracking' %}" class="nav__link">Tracking</a></li>
+                </ul>
+            </div>
+            <div>
+                <!-- <i class='bx bx-cart nav__cart'></i> -->
+                <i class='bx bx-menu nav__toggle' id='nav-toggle'></i>
+            </div>
+        </nav>
+    </header>
+    <main class="l-main">
+        <section class="home" id='home'>
+            <div class="home__container bd-grid">
+                <div class="home__data">
+                    <h1 class="home__title">
+                        TRACK<br><span>ORDER</span>
+                    </h1>
+                    {% comment %} <a href="bookmeal" class="button">BOOK YOUR MEAL</a> {% endcomment %}
+                </div>
+                <img src="/static/img/homeimg.png" alt="" class="home__img">
+            </div>
+        </section>
+        <section class="newsletter section" id='subscribed'>
+            <div class="newsletter__contaier bd-grid">
+                <h2 class="section-title">
+                    TRACK YOUR ORDER
+                </h2>
+                <p class="newsletter__description">
+                    Know the status of your order
+                </p>
+                <form action="/tracked/" class="newsletter__form" method='post'>
+                    {% csrf_token %}
+                    <input type="text" class="newsletter__input"  placeholder="Enter Your Order Id" name='orderid'>
+                    <button type='submit' class="button">TRACK</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    <footer class="footer">
+        <div class="footer__container bd-grid">
+            <div class="footer__box">
+                <h3 class="footer__title">ANJU PIZZA WALI</h3>
+                <p class="footer__deal">Online Food Store</p>
+                <a href="#"><img src="/static/img/footerstore1.png" alt="" class="footer__store"></a>
+                <a href="#"><img src="/static/img/footerstore2.png" alt="" class="footer__store"></a>
+            </div>
+            <div class="footer__box">
+                <h3 class="footer__title">EXPLORE</h3>
+                <ul>
+                    <li><a href="{% url 'home' %}" class="footer__link">Home</a></li>
+                    <li><a href="{% url 'bookmeal' %}" class="footer__link">Book your Meal</a></li>
+                    <li><a href="{% url 'home' %}" class="footer__link">Combos</a></li>
+                    <li><a href="{% url 'tracking' %}" class="footer__link">Tracking</a></li>
+                </ul>
+            </div>
+
+            <!-- <div class="footer__box">
+                <h3 class="footer__title">OUR SERVICES</h3>
+                <ul>
+                    <li><a href="#" class="footer__link">Pricing</a></li>
+                    <li><a href="#" class="footer__link">Free Shipping</a></li>
+                    <li><a href="#" class="footer__link">Gift Cards</a></li>
+                </ul>
+            </div> -->
+            <div class="footer__box">
+                <h3 class="footer__title">FOLLOW</h3>
+                <a href="#" class="footer__social"><i class='bx bxl-facebook-square' ></i></a>
+                <a href="#" class="footer__social"><i class='bx bxl-instagram' ></i></a>
+                <a href="#" class="footer__social"><i class='bx bxl-twitter' ></i></a>
+            </div>
+        </div>
+        <p class="footer__copy">&#169 COPYRIGHT 2022 all rights reserved</p>
+    </footer>
+
+    <!-- main js -->
+    <script src='/static/main.js'></script>
+</body>
+</html>

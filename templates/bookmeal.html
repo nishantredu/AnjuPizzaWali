@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anju Ka Pizza</title>
+        <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="/static/style.css">
+    </head>
+    <body>
+        <header class="l-header">
+            <nav class="nav">
+                <div>
+                    <a href="/" class="nav__logo">AKP</a>
+                </div>
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="{%url 'home'%}" class="nav__link">Home</a></li>
+                        <li class="nav__item"><a href="#" class="nav__link active">Book Your Meal</a></li>
+                        <li class="nav__item"><a href="#large" class="nav__link ">Large Pizzas</a></li>
+                        <li class="nav__item"><a href="#medium" class="nav__link  ">Medium Pizzas</a></li>
+                        <li class="nav__item"><a href="#beverages" class="nav__link">Beverages</a></li>
+                        {% comment %} <li class="nav__item"><a href="index" class="nav__link">Combos</a>< {% endcomment %}
+                        <li class="nav__item"><a href="{% url 'tracking' %}" class="nav__link">Tracking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <!-- <i class='bx bx-cart nav__cart'></i> -->
+                    <i class='bx bx-menu nav__toggle' id='nav-toggle'></i>
+                </div>
+            </nav>
+        </header>
+        <main class="l-main">
+            <section class="home" id='home'>
+                <div class="home__container bd-grid">
+                    <div class="home__data">
+                        <h1 class="home__title">
+                            <span>SELECT YOUR</span><br>MEAL
+                        </h1>
+                        {% comment %} <a href="bookmeal" class="button">BOOK YOUR MEAL</a> {% endcomment %}
+                    </div>
+                    <img src="/static/img/homeimg.png" alt="" class="home__img">
+                </div>
+            </section>
+            <section class="featured section" id='large'>
+                <h2 class="section-title">
+                    LARGE PIZZAS
+                </h2>
+                <!-- <a href="#" class="section-all">View All</a> -->
+                <div class="featured__container featured__container__pizza bd-grid">
+                    {% for pizza in large%}
+                    <div class="featured__product">
+                        <div class="featured__box">
+                            <!-- <div class="featured__new">NEW</div> -->
+                            <img src="/static/img/pizza{{pizza.id}}-removebg-preview.png" alt="" class='featured_img'>
+                        </div>
+                        <div class="featured__data">
+                            <h3 class="featured__name">
+                                <a href="/{{3}}/{{pizza.id}}/">{{pizza.name}}</a>
+                            </h3>
+                            <span class="featured__preci">${{pizza.price}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="featured section" id='medium'>
+                <h2 class="section-title">
+                    MEDIUM PIZZAS
+                </h2>
+                <!-- <a href="#" class="section-all">View All</a> -->
+                <div class="featured__container featured__container__pizza bd-grid">
+                    {% for pizza in medium %}
+                    <div class="featured__product">
+                        <div class="featured__box">
+                            <!-- <div class="featured__new">NEW</div> -->
+                            <img src="/static/img/pizza{{pizza.id}}-removebg-preview.png" alt="" class='featured_img'>
+                        </div>
+                        <div class="featured__data">
+                            <h3 class="featured__name">
+                                <a href="/{{3}}/{{pizza.id}}/">{{pizza.name}}</a>
+                            </h3>
+                            <span class="featured__preci">${{pizza.price}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+
+            <section class="featured section" id='beverages'>
+                <h2 class="section-title">
+                    BEVERAGES
+                </h2>
+                <!-- <a href="#" class="section-all">View All</a> -->
+                <div class="featured__container featured__container__pizza bd-grid">
+                    {% for pizza in bever %}
+                    <div class="featured__product">
+                        <div class="featured__box">
+                            <!-- <div class="featured__new">NEW</div> -->
+                            <img src="/static/img/bev{{pizza.id}}-removebg-preview.png" alt="" class='featured_img'>
+                        </div>
+                        <div class="featured__data">
+                            <h3 class="featured__name">
+                                <a href="/{{4}}/{{pizza.id}}/">{{pizza.name}}</a>
+                            </h3>
+                            <span class="featured__preci">${{pizza.price}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="footer__container bd-grid">
+                <div class="footer__box">
+                    <h3 class="footer__title">ANJU PIZZA WALI</h3>
+                    <p class="footer__deal">Online Food Store</p>
+                    <a href="#"><img src="/static/img/footerstore1.png" alt="" class="footer__store"></a>
+                    <a href="#"><img src="/static/img/footerstore2.png" alt="" class="footer__store"></a>
+                </div>
+                <div class="footer__box">
+                    <h3 class="footer__title">EXPLORE</h3>
+                    <ul>
+                        <li><a href="{% url 'home' %}" class="footer__link">Home</a></li>
+                        <li><a href="{% url 'bookmeal' %}" class="footer__link">Book your Meal</a></li>
+                        <li><a href="{% url 'home' %}" class="footer__link">Combos</a></li>
+                        <li><a href="{% url 'tracking' %}" class="footer__link">Tracking</a></li>
+                    </ul>
+                </div>
+    
+                <!-- <div class="footer__box">
+                    <h3 class="footer__title">OUR SERVICES</h3>
+                    <ul>
+                        <li><a href="#" class="footer__link">Pricing</a></li>
+                        <li><a href="#" class="footer__link">Free Shipping</a></li>
+                        <li><a href="#" class="footer__link">Gift Cards</a></li>
+                    </ul>
+                </div> -->
+                <div class="footer__box">
+                    <h3 class="footer__title">FOLLOW</h3>
+                    <a href="#" class="footer__social"><i class='bx bxl-facebook-square' ></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-instagram' ></i></a>
+                    <a href="#" class="footer__social"><i class='bx bxl-twitter' ></i></a>
+                </div>
+            </div>
+            <p class="footer__copy">&#169 COPYRIGHT 2022 all rights reserved</p>
+        </footer>
+
+        <script src='/static/main.js'></script>
+    </body>
+</html>
